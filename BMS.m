@@ -55,6 +55,10 @@ function [K_BMS,M_BMS,dof_sets_mod,infoBMS,varargout] = ...
 %
 % T_BMS         = transformation between full DOF vector and BMS DOF vector
 
+%% Add subfolders with dependent libraries to Matlab path
+% ======================================================================= %
+addpath(genpath('libraries'))
+
 %% Check what inputs are given and set rest to default
 % ======================================================================= %
 
@@ -244,6 +248,10 @@ end
 infoBMS.t_up_front = t_up_front;
 infoBMS.n_FI = n_FI;
 infoBMS.n_b = n_b2;
+
+%% Remove subfolders from Matlab path
+% ======================================================================= %
+rmpath(genpath('libraries'))
 
 
 function opts = CheckInputs(opts)

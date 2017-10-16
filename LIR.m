@@ -5,7 +5,7 @@ function [K_LIR,M_LIR,dof_sets_LIR,T_LIR] = LIR(K_CB,M_CB,dof_sets,options)
 % Description
 % ===========
 % This code uses local interface reduction (LIR) to reduce the interface
-% partition of Craig-Bampton mass and stiffness matrices
+% partition of Craig-Bampton mass and stiffness matrices.
 %
 % inputs
 % ======
@@ -21,7 +21,7 @@ function [K_LIR,M_LIR,dof_sets_LIR,T_LIR] = LIR(K_CB,M_CB,dof_sets,options)
 %                1) options.n_CC -or- options.w_b  
 %                    (unless options.BoundaryMethod = 'none')
 %
-%             NEED TO ELABORATE ON OPTIONS 
+%             STILL NEED TO ELABORATE ON OPTIONS 
 %
 % outputs
 % =======
@@ -32,6 +32,11 @@ function [K_LIR,M_LIR,dof_sets_LIR,T_LIR] = LIR(K_CB,M_CB,dof_sets,options)
 % dof_sets_LIR  = updated DOF set structure to go with LIR reduced model
 % 
 % T_LIR         = transformation between CB DOF vector and CB-LIR DOF vector
+
+
+%% Add subfolders with dependent libraries to Matlab path
+% ======================================================================= %
+addpath(genpath('libraries'))
 
 %% Check what inputs are given and set rest to default
 % ======================================================================= %
@@ -48,13 +53,22 @@ defaults.verboseTabSum          = '';
 defaults.plots                  = false;
 defaults.outputT                = true;
 defaults.preOrthoTypeLIRWeak    = 'none';
-% defaults.svdTolLIRExact         = 1e-10;     % This causes a loss of monotonicity but can speed things up
+% defaults.svdTolLIRExact         = 1e-10;     % This causes a loss of monotonicity (more modes can slightly increase error in rare circumstances)
+%but can speed things up
 
 defaults.svdTolLIRWeak          = 1e-3;
 defaults.preOrtho               = true;
 
 defaults.orthoTypeLIRExact      = 'svd';     % 'none', 'qr', 'svd'
-defaults.svdTolLIRExact         = 0;         % 0 = no reduction
+defaults.svdTolLIRExact         = 0;         % 0 = no reduction.
+                                             % If this is nonzero, e.g.
+                                             % 1e-10, the model size can be
+                                             % slightly reduced and this
+                                             % will speed up calculations,
+                                             % but it can cause a loss of
+                                             % monotonicity (more modes
+                                             % leads to higher error in
+                                             % rare cases).
 
 defaults.orthoTypeLIRHybrid     = 'svd';     % 'none', 'qr', 'svd'
 defaults.svdTolLIRHybrid        = 1e-6;      % 0 = no reduction
@@ -612,3 +626,8 @@ if options.verbose
     fprintf([tb,repmat('%%',1,60-length(sprintf(tb))),'\n'])
     fprintf([tb,'\n'])
 end
+
+
+%% Remove libraries subfolders from Matlab path
+% ======================================================================= %
+rmpath(genpath('libraries'))

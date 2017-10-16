@@ -26,6 +26,13 @@ function PHI_exp = ...
 %
 % T_BMS         = Residual Enhanced BMS transformation
 
+%% Add subfolders with dependent libraries to Matlab path
+% ======================================================================= %
+addpath(genpath('libraries'))
+
+%% Use the residual-enhanced transformation to expand back to full model size
+% ======================================================================= %
+
 % useful dimensions
 [~,n_modes,n_kap] = size(PHI);
 n_dof_full = size(T_BMS.w0,1);
@@ -59,3 +66,8 @@ for j = 1:n_kap
     PHI_exp(:,:,j) = T_BMS.w0*(T_per_k*PHI(:,:,j))+T_BMS.w2*(T_per_k*(Mp.w0\(Kp.w0*PHI(:,:,j))));
 
 end
+
+
+%% Remove subfolders from Matlab path
+% ======================================================================= %
+rmpath(genpath('libraries'))
