@@ -1,3 +1,6 @@
 [submodule "libraries/band-structure-tools"]
 	path = libraries/band-structure-tools
 	url = https://github.com/dkrattiger/band-structure-tools.git
+[submodule "libraries/structural-dynamics-tools"]
+	path = libraries/structural-dynamics-tools
+	url = https://github.com/dkrattiger/structural-dynamics-tools.git
