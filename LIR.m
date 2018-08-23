@@ -34,10 +34,6 @@ function [K_LIR,M_LIR,dof_sets_LIR,T_LIR] = LIR(K_CB,M_CB,dof_sets,options)
 % T_LIR         = transformation between CB DOF vector and CB-LIR DOF vector
 
 
-%% Add subfolders with dependent libraries to Matlab path
-% ======================================================================= %
-addpath(genpath('libraries'))
-
 %% Check what inputs are given and set rest to default
 % ======================================================================= %
 
@@ -626,8 +622,3 @@ if options.verbose
     fprintf([tb,repmat('%%',1,60-length(sprintf(tb))),'\n'])
     fprintf([tb,'\n'])
 end
-
-
-%% Remove libraries subfolders from Matlab path
-% ======================================================================= %
-rmpath(genpath('libraries'))

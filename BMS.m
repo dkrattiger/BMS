@@ -207,7 +207,6 @@ elseif any(strcmpi(options.InteriorMethod,{'amls+','cb+'}))
     end    
 end
 
-
 %% output transformation matrix
 % ======================================================================= %
 if options.outputT
