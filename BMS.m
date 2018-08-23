@@ -1,9 +1,7 @@
-function [K_BMS,M_BMS,dof_sets_mod,infoBMS,varargout] = ...
-                BMS(K_free,M_free,X,R,options)
+function [K_BMS, M_BMS, dof_sets_mod, infoBMS, varargout] = ...
+                BMS(K_free, M_free, X, R, options)
 
-            
-% Dimitri Krattiger
-%
+
 % Sample Call
 % ===========
 % options.n_FI = 10; % use 10 fixed-interface modes
@@ -54,7 +52,25 @@ function [K_BMS,M_BMS,dof_sets_mod,infoBMS,varargout] = ...
 %                 include the actual dispersion calculation)
 %
 % T_BMS         = transformation between full DOF vector and BMS DOF vector
-
+%
+% Citation
+% ========
+%
+% The algorithms contained in this code are described in the following
+% references. Please cite them appropriately when using or modifying this 
+% code.
+%
+% [1]   D. Krattiger and M. I. Hussein, ?Generalized Bloch mode synthesis 
+%       for accelerated calculation of elastic band structures,? Journal 
+%       of Computational Physics, vol. 357, pp. 183?205, Mar. 2018.
+%
+% [2]   D. Krattiger and M. I. Hussein, ?Bloch mode synthesis: Ultrafast 
+%       methodology for elastic band-structure calculations,? Physical 
+%       Review E, vol. 90, no. 6, Dec. 2014.
+%
+% [3]   D. Krattiger, ?Fast Band-Structure Computation for Phononic and 
+%       Electronic Waves in Crystals,? PhD Thesis, University of Colorado 
+%       at Boulder, 2017.
 
 %% Check what inputs are given and set rest to default
 % ======================================================================= %
