@@ -32,7 +32,20 @@ function [K_LIR,M_LIR,dof_sets_LIR,T_LIR] = LIR(K_CB,M_CB,dof_sets,options)
 % dof_sets_LIR  = updated DOF set structure to go with LIR reduced model
 % 
 % T_LIR         = transformation between CB DOF vector and CB-LIR DOF vector
-
+%
+% Citation
+% ========
+% The algorithms contained in this code are described in the following
+% references. Please cite them appropriately when using or modifying this 
+% code.
+% 
+% [1]   D. Krattiger et al., Interface reduction for Hurty/Craig-Bampton 
+%       substructured models: Review and improvements, Mechanical Systems 
+%       and Signal Processing, vol. 114, pp. 579?603, Jan. 2019.
+%
+% [2]   D. Krattiger and M. I. Hussein, Generalized Bloch mode synthesis 
+%       for accelerated calculation of elastic band structures, Journal 
+%       of Computational Physics, vol. 357, pp. 183?205, Mar. 2018.
 
 %% Check what inputs are given and set rest to default
 % ======================================================================= %
@@ -49,8 +62,6 @@ defaults.verboseTabSum          = '';
 defaults.plots                  = false;
 defaults.outputT                = true;
 defaults.preOrthoTypeLIRWeak    = 'none';
-% defaults.svdTolLIRExact         = 1e-10;     % This causes a loss of monotonicity (more modes can slightly increase error in rare circumstances)
-%but can speed things up
 
 defaults.svdTolLIRWeak          = 1e-3;
 defaults.preOrtho               = true;
@@ -155,10 +166,10 @@ boundary_set_names = {{'l','r'},{'f','b'},{'d','t'},...
        {'lfd','rfd','rbd','lbd','lft','rft','rbt','lbt'}};
 
 
-%% CC Mode Calculation
+%% Characteristic Constraint Mode Calculation
 % ======================================================================= %
 
-if strcmpi(options.BoundaryMethod,'exact') | strcmpi(options.BoundaryMethod,'weak')
+if strcmpi(options.BoundaryMethod,'exact') || strcmpi(options.BoundaryMethod,'weak')
     if full_eig
         [PHI_b,L_b] = eig(full(K_CB(i_b,i_b)),...
             full(M_CB(i_b,i_b)));
@@ -178,7 +189,7 @@ if strcmpi(options.BoundaryMethod,'exact') | strcmpi(options.BoundaryMethod,'wea
     end
 
     % test for rigid body modes and add them if necessary
-    if (min(L_b)>max(L_b)*1e-10) && wCenter == 0;
+    if (min(L_b)>max(L_b)*1e-10) && wCenter == 0
         PHIr = zeros(length(i_b),3);
         PHIr(1:3:end,1) = 1;
         PHIr(2:3:end,2) = 1;

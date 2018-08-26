@@ -19,12 +19,24 @@ function [omega, Phi] = ...
 % 
 % m_exp = number of expansion modes
 % 
-% KappaPts = These are the "vertices" in wave vector space that will be
-% connected in order to compute the band-structure. Usually these are some
-% high symmetry points
+% kappaPts = These are the "vertices" in wave vector space that will be
+% connected in order to compute the band-structure. Usually these are
+% high symmetry points.
 %
 % X  = node coordinates
- 
+% R  = lattice vectors
+%
+% Citation
+% ========
+% The algorithms contained in this code are described in the following
+% reference. Please cite it appropriately when using or modifying this 
+% code.
+%
+% [1]   M. I. Hussein, ?Reduced Bloch mode expansion for periodic media 
+%       band structure calculations,? Proceedings of the Royal Society 
+%       A: Mathematical, Physical and Engineering Sciences, vol. 465, 
+%       no. 2109, pp. 2825?2848, Sep. 2009.
+%
 
 %% Check what inputs are given and set rest to default
 % ======================================================================= %

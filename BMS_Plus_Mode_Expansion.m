@@ -25,6 +25,24 @@ function PHI_exp = ...
 % T_BMS         = Residual Enhanced BMS transformation
 %
 % T_BMS         = Residual Enhanced BMS transformation
+%
+% Citation
+% ========
+% The algorithms contained in this code are described in the following
+% references. Please cite them appropriately when using or modifying this 
+% code.
+%
+% [1]   D. Krattiger and M. I. Hussein, Generalized Bloch mode synthesis 
+%       for accelerated calculation of elastic band structures, Journal 
+%       of Computational Physics, vol. 357, pp. 183?205, Mar. 2018.
+%
+% [2]   D. Krattiger and M. I. Hussein, Bloch mode synthesis: Ultrafast 
+%       methodology for elastic band-structure calculations, Physical 
+%       Review E, vol. 90, no. 6, Dec. 2014.
+%
+% [3]   D. Krattiger, Fast Band-Structure Computation for Phononic and 
+%       Electronic Waves in Crystals, PhD Thesis, University of Colorado 
+%       at Boulder, 2017.
 
 %% Use the residual-enhanced transformation to expand back to full model size
 % ======================================================================= %
