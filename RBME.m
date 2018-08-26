@@ -32,8 +32,8 @@ function [omega, Phi] = ...
 % reference. Please cite it appropriately when using or modifying this 
 % code.
 %
-% [1]   M. I. Hussein, ?Reduced Bloch mode expansion for periodic media 
-%       band structure calculations,? Proceedings of the Royal Society 
+% [1]   M. I. Hussein, "Reduced Bloch mode expansion for periodic media 
+%       band structure calculations," Proceedings of the Royal Society 
 %       A: Mathematical, Physical and Engineering Sciences, vol. 465, 
 %       no. 2109, pp. 2825?2848, Sep. 2009.
 %
